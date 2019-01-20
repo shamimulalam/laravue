@@ -12,7 +12,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>AdminLTE 3 | Starter</title>
+    <title>Laravue | Starter</title>
 
 
     <link href="css/app.css" rel="stylesheet">
@@ -148,7 +148,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <a href="index3.html" class="brand-link">
             <img src="img/logo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
                  style="opacity: .8">
-            <span class="brand-text font-weight-light">AdminLTE 3</span>
+            <span class="brand-text font-weight-light">Laravue</span>
         </a>
 
         <!-- Sidebar -->
@@ -186,16 +186,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         </a>
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
-                                <a href="#" class="nav-link active">
-                                    <i class="fas fa-circle-notch"></i>
-                                    <p>Active Page</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="#" class="nav-link">
-                                    <i class="fas fa-circle-notch"></i>
-                                    <p>Inactive Page</p>
-                                </a>
+                                <router-link to="users" class="nav-link">
+                                    <i class="fas fa-users"></i>
+                                    <p>Users</p>
+                                </router-link>
                             </li>
                         </ul>
                     </li>

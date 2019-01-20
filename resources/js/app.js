@@ -13,12 +13,19 @@ import VueRouter from 'vue-router'
 
 // Routes are here
 Vue.use(VueRouter)
+import { Form, HasError, AlertError } from 'vform'
 import Dashboard from './components/Dashboard'
 import Profile from './components/Profile'
+import Users from './components/Users'
+
+window.Form = Form;
+Vue.component(HasError.name, HasError);
+Vue.component(AlertError.name, AlertError);
 
 let Routes = [
     {path: '/dashboard', component: Dashboard},
-    {path: '/profile', component: Profile}
+    {path: '/profile', component: Profile},
+    {path: '/users', component: Users},
 ]
 
 const router = new VueRouter({
