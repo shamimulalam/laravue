@@ -166,6 +166,7 @@
         },
         methods:{
             createUser: function(){
+                this.$Progress.start();
                 this.form.post('api/user');
             },
             loadUsers: function () {

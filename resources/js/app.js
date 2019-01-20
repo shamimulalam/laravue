@@ -10,10 +10,19 @@ require('./bootstrap');
 window.Vue = require('vue');
 import VueRouter from 'vue-router'
 
-
 // Routes are here
-Vue.use(VueRouter)
+Vue.use(VueRouter);
+// Vue progress bar
+import VueProgressBar from 'vue-progressbar'
+Vue.use(VueProgressBar, {
+    color: 'rgb(143, 255, 199)',
+    failedColor: 'red',
+    height: '2px'
+});
+
 import { Form, HasError, AlertError } from 'vform'
+
+// components
 import Dashboard from './components/Dashboard'
 import Profile from './components/Profile'
 import Users from './components/Users'
@@ -26,7 +35,7 @@ let Routes = [
     {path: '/dashboard', component: Dashboard},
     {path: '/profile', component: Profile},
     {path: '/users', component: Users},
-]
+];
 
 const router = new VueRouter({
     mode : 'history',
