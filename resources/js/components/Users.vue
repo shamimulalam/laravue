@@ -26,11 +26,11 @@
                                         </tr>
                                         </thead>
                                         <tbody>
-                                        <tr role="row" class="odd">
-                                            <td>1</td>
-                                            <td>Name</td>
-                                            <td>Email</td>
-                                            <td>Phone</td>
+                                        <tr v-for="user in users.data" :key="user.id">
+                                            <td>{{ user.id }}</td>
+                                            <td>{{ user.name }}</td>
+                                            <td>{{ user.email }}</td>
+                                            <td>{{ user.phone }}</td>
                                             <td>
                                                 <router-link to="#">
                                                     <i class="fas fa-edit"></i>
@@ -160,13 +160,20 @@
                     type : '',
                     photo : '',
                     bio : '',
-                })
+                }),
+                users: {},
             }
         },
         methods:{
             createUser: function(){
                 this.form.post('api/user');
+            },
+            loadUsers: function () {
+                axios.get('api/user').then(({ data })=> this.users=data);
             }
+        },
+        created() {
+            this.loadUsers();
         }
     }
 </script>

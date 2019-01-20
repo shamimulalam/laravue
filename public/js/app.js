@@ -2042,13 +2042,25 @@ __webpack_require__.r(__webpack_exports__);
         type: '',
         photo: '',
         bio: ''
-      })
+      }),
+      users: {}
     };
   },
   methods: {
     createUser: function createUser() {
       this.form.post('api/user');
+    },
+    loadUsers: function loadUsers() {
+      var _this = this;
+
+      axios.get('api/user').then(function (_ref) {
+        var data = _ref.data;
+        return _this.users = data;
+      });
     }
+  },
+  created: function created() {
+    this.loadUsers();
   }
 });
 
@@ -38057,18 +38069,17 @@ var render = function() {
                     [
                       _vm._m(1),
                       _vm._v(" "),
-                      _c("tbody", [
-                        _c(
-                          "tr",
-                          { staticClass: "odd", attrs: { role: "row" } },
-                          [
-                            _c("td", [_vm._v("1")]),
+                      _c(
+                        "tbody",
+                        _vm._l(_vm.users.data, function(user) {
+                          return _c("tr", { key: user.id }, [
+                            _c("td", [_vm._v(_vm._s(user.id))]),
                             _vm._v(" "),
-                            _c("td", [_vm._v("Name")]),
+                            _c("td", [_vm._v(_vm._s(user.name))]),
                             _vm._v(" "),
-                            _c("td", [_vm._v("Email")]),
+                            _c("td", [_vm._v(_vm._s(user.email))]),
                             _vm._v(" "),
-                            _c("td", [_vm._v("Phone")]),
+                            _c("td", [_vm._v(_vm._s(user.phone))]),
                             _vm._v(" "),
                             _c(
                               "td",
@@ -38083,9 +38094,10 @@ var render = function() {
                               ],
                               1
                             )
-                          ]
-                        )
-                      ])
+                          ])
+                        }),
+                        0
+                      )
                     ]
                   )
                 ])
