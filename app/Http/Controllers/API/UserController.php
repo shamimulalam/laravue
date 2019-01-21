@@ -16,7 +16,16 @@ class UserController extends Controller
      */
     public function index()
     {
-        return User::latest()->paginate(10);
+        try {
+            $data['data']=User::latest()->paginate(10);
+            $data['code']=111;
+            $data['details']='Success';
+        }catch (\Exception $exception)
+        {
+            $data['code']=999;
+            $data['details']=$exception->getMessage();
+        }
+        return $data;
     }
 
     /**
@@ -33,16 +42,25 @@ class UserController extends Controller
             'password'=>'required|string|min:6',
             'type'=>'required|string|max:191',
         ]);
-         return User::create([
-            'name'=>$request->name,
-            'phone'=>$request->phone,
-            'address'=>$request->address,
-            'bio'=>$request->bio,
-            'email'=>$request->email,
-            'password'=>Hash::make($request->password),
-            'photo'=>$request->photo,
-            'type'=>$request->type,
-        ]);
+        try {
+            $data['data']=User::create([
+                'name' => $request->name,
+                'phone' => $request->phone,
+                'address' => $request->address,
+                'bio' => $request->bio,
+                'email' => $request->email,
+                'password' => Hash::make($request->password),
+                'photo' => $request->photo,
+                'type' => $request->type,
+            ]);
+            $data['code']=111;
+            $data['details']='Success';
+        }catch (\Exception $exception)
+        {
+            $data['code']=999;
+            $data['details']=$exception->getMessage();
+        }
+        return $data;
     }
 
     /**
@@ -76,6 +94,15 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        //
+        try{
+            $data['data']=User::findOrFail($id)->delete();
+            $data['code']=111;
+            $data['details']='Deleted';
+        }catch (\Exception $exception)
+        {
+            $data['code']=999;
+            $data['details']=$exception->getMessage();
+        }
+        return $data;
     }
 }

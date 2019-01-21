@@ -2048,34 +2048,76 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     createUser: function createUser() {
+      var _this = this;
+
       this.$Progress.start();
-      this.form.post('api/user');
-      Fire.$emit('CHANGE');
-      $('#userModal').modal('hide');
-      this.form.reset();
-      Toast.fire({
-        type: 'success',
-        title: 'User created successfully'
-      });
+      this.form.post('api/user').then(function () {
+        Fire.$emit('CHANGE');
+        $('#userModal').modal('hide');
+
+        _this.form.reset();
+
+        Toast.fire({
+          type: 'success',
+          title: 'User created successfully'
+        });
+      }).catch(function () {});
       this.$Progress.finish();
     },
     loadUsers: function loadUsers() {
-      var _this = this;
+      var _this2 = this;
 
       this.$Progress.start();
       axios.get('api/user').then(function (_ref) {
         var data = _ref.data;
-        return _this.users = data;
+
+        if (data.code && data.code == 111) {
+          _this2.users = data.data;
+        } else {
+          Swal.fire('Unexpected error !', data.details, 'warning');
+        }
       });
       this.$Progress.finish();
+    },
+    deleteUser: function deleteUser(id) {
+      var _this3 = this;
+
+      Swal.fire({
+        title: 'Are you sure?',
+        text: "You won't be able to revert this!",
+        type: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes, delete it!'
+      }).then(function (result) {
+        if (result.value) {
+          _this3.$Progress.start();
+
+          _this3.form.delete('api/user/' + id).then(function (_ref2) {
+            var data = _ref2.data;
+
+            if (data.code && data.code == 111) {
+              Fire.$emit('CHANGE');
+              Swal.fire('Deleted!', 'Your file has been deleted.', 'success');
+            } else {
+              Swal.fire('Unexpected error !', data.details, 'warning');
+            }
+          }).catch(function () {
+            Swal.fire('Failed!', 'Something went wrong', 'warning');
+          });
+
+          _this3.$Progress.finish();
+        }
+      });
     }
   },
   created: function created() {
-    var _this2 = this;
+    var _this4 = this;
 
     this.loadUsers();
     Fire.$on('CHANGE', function () {
-      return _this2.loadUsers();
+      return _this4.loadUsers();
     }); // setInterval(()=>this.loadUsers(),3000);
   }
 });
@@ -42341,9 +42383,18 @@ var render = function() {
                                   _c("i", { staticClass: "fas fa-edit" })
                                 ]),
                                 _vm._v(" "),
-                                _c("router-link", { attrs: { to: "#" } }, [
-                                  _c("i", { staticClass: "fas fa-trash" })
-                                ])
+                                _c(
+                                  "a",
+                                  {
+                                    attrs: { href: "#" },
+                                    on: {
+                                      click: function($event) {
+                                        _vm.deleteUser(user.id)
+                                      }
+                                    }
+                                  },
+                                  [_c("i", { staticClass: "fas fa-trash" })]
+                                )
                               ],
                               1
                             )

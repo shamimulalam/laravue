@@ -35,9 +35,9 @@
                                                 <router-link to="#">
                                                     <i class="fas fa-edit"></i>
                                                 </router-link>
-                                                <router-link to="#">
+                                                <a href="#" @click="deleteUser(user.id)">
                                                     <i class="fas fa-trash"></i>
-                                                </router-link>
+                                                </a>
                                             </td>
                                         </tr>
                                         </tbody>
@@ -167,21 +167,75 @@
         methods:{
             createUser: function(){
                 this.$Progress.start();
-                this.form.post('api/user');
-                Fire.$emit('CHANGE');
-                $('#userModal').modal('hide');
-                this.form.reset();
-                Toast.fire({
-                    type: 'success',
-                    title: 'User created successfully'
+                this.form.post('api/user').then(()=>{
+                    Fire.$emit('CHANGE');
+                    $('#userModal').modal('hide');
+                    this.form.reset();
+                    Toast.fire({
+                        type: 'success',
+                        title: 'User created successfully'
+                    });
+                }).catch(()=>{
+
                 });
                 this.$Progress.finish();
 
             },
             loadUsers: function () {
                 this.$Progress.start();
-                axios.get('api/user').then(({ data })=> this.users=data);
+                axios.get('api/user').then(({ data })=> {
+                    if(data.code && data.code==111)
+                    {
+                        this.users= data.data;
+                    }else{
+                        Swal.fire(
+                            'Unexpected error !',
+                            data.details,
+                            'warning'
+                        )
+                    }
+                });
                 this.$Progress.finish();
+            },
+            deleteUser: function (id) {
+                Swal.fire({
+                    title: 'Are you sure?',
+                    text: "You won't be able to revert this!",
+                    type: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Yes, delete it!'
+                }).then((result) => {
+                    if (result.value) {
+                        this.$Progress.start();
+                        this.form.delete('api/user/' + id).then(({ data })=>{
+                            if(data.code && data.code==111)
+                            {
+                                Fire.$emit('CHANGE');
+                                Swal.fire(
+                                    'Deleted!',
+                                    'Your file has been deleted.',
+                                    'success'
+                                )
+                            }else{
+                                Swal.fire(
+                                    'Unexpected error !',
+                                    data.details,
+                                    'warning'
+                                )
+                            }
+                        }).catch(()=>{
+                            Swal.fire(
+                                'Failed!',
+                                'Something went wrong',
+                                'warning'
+                            )
+                        });
+                        this.$Progress.finish();
+
+                    }
+                })
             }
         },
         created() {
