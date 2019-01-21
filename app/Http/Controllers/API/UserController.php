@@ -71,7 +71,16 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        //
+        try {
+            $data['data']=User::findOrFail($id);
+            $data['code']=111;
+            $data['details']='Success';
+        }catch (\Exception $exception)
+        {
+            $data['code']=999;
+            $data['details']=$exception->getMessage();
+        }
+        return $data;
     }
 
     /**
@@ -83,7 +92,32 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'name'=>'required|string|max:191',
+            'email'=>'required|string|max:191|unique:users,email,'.$id,
+            'password'=>'sometimes|string|min:6',
+            'type'=>'required|string|max:191',
+        ]);
+        try {
+            $user=User::findOrFail($id);
+            $data['data']=$user->update([
+                'name' => $request->name,
+                'phone' => $request->phone,
+                'address' => $request->address,
+                'bio' => $request->bio,
+                'email' => $request->email,
+                'password' => Hash::make($request->password),
+                'photo' => $request->photo,
+                'type' => $request->type,
+            ]);
+            $data['code']=111;
+            $data['details']='Success';
+        }catch (\Exception $exception)
+        {
+            $data['code']=999;
+            $data['details']=$exception->getMessage();
+        }
+        return $data;
     }
 
     /**

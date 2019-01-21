@@ -7,7 +7,7 @@
                     <div class="card-header">
                         <h3 class="card-title">Users</h3>
                         <div class="card-tools">
-                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#userModal">Add new</button>
+                            <button type="button" class="btn btn-success" @click="createUserModal"><i class="fas fa-user-plus"></i> Add new</button>
                         </div>
                     </div>
                     <!-- /.card-header -->
@@ -32,9 +32,9 @@
                                             <td>{{ user.email }}</td>
                                             <td>{{ user.phone }}</td>
                                             <td>
-                                                <router-link to="#">
+                                                <a href="#" @click="editUserModal(user.id)">
                                                     <i class="fas fa-edit"></i>
-                                                </router-link>
+                                                </a>
                                                 <a href="#" @click="deleteUser(user.id)">
                                                     <i class="fas fa-trash"></i>
                                                 </a>
@@ -93,12 +93,13 @@
             <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Add User</h5>
+                        <h5 class="modal-title" v-show="!editMode">Add User</h5>
+                        <h5 class="modal-title" v-show="editMode">Edit User</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
-                    <form @submit.prevent="createUser" @keydown="form.onKeydown($event)">
+                    <form @submit.prevent="editMode?updateUser():createUser()" @keydown="form.onKeydown($event)">
                         <div class="modal-body">
                             <div class="form-group">
                                 <input v-model="form.name" type="text" name="name" class="form-control" :class="{ 'is-invalid': form.errors.has('name') }" placeholder="Enter user name">
@@ -135,12 +136,12 @@
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                            <button type="submit" class="btn btn-primary">Create User</button>
+                            <button type="submit" v-show="!editMode" class="btn btn-primary">Create User</button>
+                            <button type="submit" v-show="editMode" class="btn btn-primary">Update User</button>
                         </div>
                     </form>
                 </div>
             </div>
-        </div>
         </div>
 
     </div>
@@ -152,6 +153,7 @@
         data(){
             return {
                 form : new Form({
+                    id : '',
                     name : '',
                     phone : '',
                     email : '',
@@ -162,24 +164,77 @@
                     bio : '',
                 }),
                 users: {},
+                editMode: false,
             }
         },
         methods:{
+            createUserModal: function(){
+                this.form.reset();
+                this.editMode=false;
+                $('#userModal').modal('show');
+
+            },
             createUser: function(){
                 this.$Progress.start();
                 this.form.post('api/user').then(()=>{
                     Fire.$emit('CHANGE');
-                    $('#userModal').modal('hide');
                     this.form.reset();
+                    $('#userModal').modal('hide');
                     Toast.fire({
                         type: 'success',
                         title: 'User created successfully'
                     });
+                    this.$Progress.finish();
                 }).catch(()=>{
+                    this.$Progress.fail();
 
                 });
-                this.$Progress.finish();
 
+            },
+            editUserModal:function (id) {
+                this.editMode=true;
+                this.$Progress.start();
+                this.form.reset();
+                axios.get('api/user/'+id).then(({ data })=> {
+                    if(data.code && data.code==111)
+                    {
+                        this.form.fill(data.data);
+                        $('#userModal').modal('show');
+                    }else{
+                        Swal.fire(
+                            'Unexpected error !',
+                            data.details,
+                            'warning'
+                        )
+                    }
+                    this.$Progress.finish();
+                })
+            },
+            updateUser: function () {
+                this.$Progress.start();
+                this.form.put('api/user/'+ this.form.id)
+                    .then(({ data })=>{
+                        if(data.code && data.code == 111)
+                        {
+                            Fire.$emit('CHANGE');
+                            this.form.reset();
+                            $('#userModal').modal('hide');
+                            Toast.fire({
+                                type: 'success',
+                                title: 'User updated successfully'
+                            });
+                        }else{
+                            console.log('yes error happend');
+                            Swal.fire(
+                                'Unexpected error !',
+                                data.details,
+                                'warning'
+                            )
+                        }
+                        this.$Progress.finish();
+                    }).catch(()=>{
+                        this.$Progress.fail();
+                    });
             },
             loadUsers: function () {
                 this.$Progress.start();
@@ -194,8 +249,8 @@
                             'warning'
                         )
                     }
+                    this.$Progress.finish();
                 });
-                this.$Progress.finish();
             },
             deleteUser: function (id) {
                 Swal.fire({
@@ -225,14 +280,15 @@
                                     'warning'
                                 )
                             }
+                            this.$Progress.finish();
                         }).catch(()=>{
                             Swal.fire(
                                 'Failed!',
                                 'Something went wrong',
                                 'warning'
-                            )
+                            );
+                            this.$Progress.fail();
                         });
-                        this.$Progress.finish();
 
                     }
                 })
