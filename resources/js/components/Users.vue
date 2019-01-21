@@ -168,20 +168,26 @@
             createUser: function(){
                 this.$Progress.start();
                 this.form.post('api/user');
-                this.$Progress.finish();
+                Fire.$emit('CHANGE');
                 $('#userModal').modal('hide');
+                this.form.reset();
                 Toast.fire({
                     type: 'success',
                     title: 'User created successfully'
                 });
+                this.$Progress.finish();
 
             },
             loadUsers: function () {
+                this.$Progress.start();
                 axios.get('api/user').then(({ data })=> this.users=data);
+                this.$Progress.finish();
             }
         },
         created() {
             this.loadUsers();
+            Fire.$on('CHANGE',()=> this.loadUsers());
+            // setInterval(()=>this.loadUsers(),3000);
         }
     }
 </script>

@@ -38,6 +38,8 @@ const Toast = Swal.mixin({
 window.Toast = Toast;
 // sweetalert2 end
 
+// new vue instant
+window.Fire = new Vue();
 
 // components
 import Dashboard from './components/Dashboard'

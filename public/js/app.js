@@ -2050,24 +2050,33 @@ __webpack_require__.r(__webpack_exports__);
     createUser: function createUser() {
       this.$Progress.start();
       this.form.post('api/user');
-      this.$Progress.finish();
+      Fire.$emit('CHANGE');
       $('#userModal').modal('hide');
+      this.form.reset();
       Toast.fire({
         type: 'success',
         title: 'User created successfully'
       });
+      this.$Progress.finish();
     },
     loadUsers: function loadUsers() {
       var _this = this;
 
+      this.$Progress.start();
       axios.get('api/user').then(function (_ref) {
         var data = _ref.data;
         return _this.users = data;
       });
+      this.$Progress.finish();
     }
   },
   created: function created() {
+    var _this2 = this;
+
     this.loadUsers();
+    Fire.$on('CHANGE', function () {
+      return _this2.loadUsers();
+    }); // setInterval(()=>this.loadUsers(),3000);
   }
 });
 
@@ -56926,7 +56935,9 @@ var Toast = sweetalert2__WEBPACK_IMPORTED_MODULE_4__["default"].mixin({
   timer: 5000
 });
 window.Toast = Toast; // sweetalert2 end
-// components
+// new vue instant
+
+window.Fire = new Vue(); // components
 
 
 
