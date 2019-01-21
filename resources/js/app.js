@@ -12,6 +12,7 @@ import VueRouter from 'vue-router'
 
 // Routes are here
 Vue.use(VueRouter);
+// ES6 Modules or TypeScript
 // Vue progress bar
 import VueProgressBar from 'vue-progressbar'
 Vue.use(VueProgressBar, {
@@ -19,8 +20,24 @@ Vue.use(VueProgressBar, {
     failedColor: 'red',
     height: '2px'
 });
-
+// VForm
 import { Form, HasError, AlertError } from 'vform'
+
+// sweetalert2 start
+import 'sweetalert2/src/sweetalert2.scss'
+import Swal from 'sweetalert2'
+window.Swal = Swal;
+
+const Toast = Swal.mixin({
+    toast: true,
+    position: 'top-end',
+    showConfirmButton: false,
+    timer: 5000
+});
+
+window.Toast = Toast;
+// sweetalert2 end
+
 
 // components
 import Dashboard from './components/Dashboard'

@@ -168,6 +168,13 @@
             createUser: function(){
                 this.$Progress.start();
                 this.form.post('api/user');
+                this.$Progress.finish();
+                $('#userModal').modal('hide');
+                Toast.fire({
+                    type: 'success',
+                    title: 'User created successfully'
+                });
+
             },
             loadUsers: function () {
                 axios.get('api/user').then(({ data })=> this.users=data);
