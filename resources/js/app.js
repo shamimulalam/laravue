@@ -37,7 +37,8 @@ const Toast = Swal.mixin({
 
 window.Toast = Toast;
 // sweetalert2 end
-
+// pagination component
+Vue.component('pagination', require('laravel-vue-pagination'));
 // new vue instant
 window.Fire = new Vue();
 
