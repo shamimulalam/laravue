@@ -22,6 +22,7 @@
         "sass": "^1.15.2",
         "sass-loader": "^7.1.0",
         "vue": "^2.5.17",
+        "vue-cli-plugin-i18n": "^0.5.1",
         "vue-template-compiler": "^2.5.22"
     },
     "dependencies": {
@@ -30,6 +31,7 @@
         "routes": "^2.1.0",
         "sweetalert2": "^8.0.1",
         "vform": "^1.0.0",
+        "vue-i18n": "^8.7.0",
         "vue-progressbar": "^0.7.5",
         "vue-router": "^3.0.2"
     }

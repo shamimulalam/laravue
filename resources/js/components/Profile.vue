@@ -5,10 +5,10 @@
                 <div class="col-md-8">
                     <div class="card card-default">
                         <div class="card-header">
-                            Profile
+                            {{ $t("message.profile.title") }}
                         </div>
                         <div class="card-body">
-                            This is profile page
+                            {{ $t('message.profile.details') }}
                         </div>
                     </div>
                 </div>

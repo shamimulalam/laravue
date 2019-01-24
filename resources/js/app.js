@@ -13,6 +13,29 @@ import VueRouter from 'vue-router'
 // Routes are here
 Vue.use(VueRouter);
 // ES6 Modules or TypeScript
+
+// Multilanguage
+import VueI18n from 'vue-i18n'
+
+Vue.use(VueI18n);
+import en from './localization/en/main'
+import bn from './localization/bn/main'
+const messages = {
+    en: en,
+    bn: bn
+};
+
+// Create VueI18n instance with options
+const i18n = new VueI18n({
+    locale: 'bn', // set locale
+    messages, // set locale messages
+});
+
+
+
+
+// Multilanguage
+
 // Vue progress bar
 import VueProgressBar from 'vue-progressbar'
 Vue.use(VueProgressBar, {
@@ -60,7 +83,7 @@ let Routes = [
 const router = new VueRouter({
     mode : 'history',
     routes : Routes,
-})
+});
 
 /**
  * The following block of code may be used to automatically register your
@@ -73,7 +96,8 @@ const router = new VueRouter({
 // const files = require.context('./', true, /\.vue$/i)
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
-Vue.component('example-component', require('./components/ExampleComponent.vue').default);
+Vue.component('locale-changer', require('./components/master/LocaleChanger.vue').default);
+Vue.component('main-menu', require('./components/master/MainMenu').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -83,5 +107,7 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
 
 const app = new Vue({
     el: '#app',
-    router
+    router,
+    i18n
 });
+i18n.locale = 'en'
