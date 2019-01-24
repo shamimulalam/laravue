@@ -60071,9 +60071,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var sweetalert2_src_sweetalert2_scss__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! sweetalert2/src/sweetalert2.scss */ "./node_modules/sweetalert2/src/sweetalert2.scss");
 /* harmony import */ var sweetalert2_src_sweetalert2_scss__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(sweetalert2_src_sweetalert2_scss__WEBPACK_IMPORTED_MODULE_6__);
 /* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! sweetalert2 */ "./node_modules/sweetalert2/src/sweetalert2.js");
-/* harmony import */ var _components_Dashboard__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./components/Dashboard */ "./resources/js/components/Dashboard.vue");
-/* harmony import */ var _components_Profile__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./components/Profile */ "./resources/js/components/Profile.vue");
-/* harmony import */ var _components_Users__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./components/Users */ "./resources/js/components/Users.vue");
+/* harmony import */ var _routes__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./routes */ "./resources/js/routes.js");
 /**
  * First we will load all of this project's JavaScript dependencies which
  * includes Vue and other libraries. It is a great starting point when
@@ -60127,27 +60125,14 @@ window.Toast = Toast; // sweetalert2 end
 
 Vue.component('pagination', __webpack_require__(/*! laravel-vue-pagination */ "./node_modules/laravel-vue-pagination/dist/laravel-vue-pagination.common.js")); // new vue instant
 
-window.Fire = new Vue(); // components
-
-
-
-
+window.Fire = new Vue();
 window.Form = vform__WEBPACK_IMPORTED_MODULE_5__["Form"];
 Vue.component(vform__WEBPACK_IMPORTED_MODULE_5__["HasError"].name, vform__WEBPACK_IMPORTED_MODULE_5__["HasError"]);
 Vue.component(vform__WEBPACK_IMPORTED_MODULE_5__["AlertError"].name, vform__WEBPACK_IMPORTED_MODULE_5__["AlertError"]);
-var Routes = [{
-  path: '/dashboard',
-  component: _components_Dashboard__WEBPACK_IMPORTED_MODULE_8__["default"]
-}, {
-  path: '/profile',
-  component: _components_Profile__WEBPACK_IMPORTED_MODULE_9__["default"]
-}, {
-  path: '/users',
-  component: _components_Users__WEBPACK_IMPORTED_MODULE_10__["default"]
-}];
+
 var router = new vue_router__WEBPACK_IMPORTED_MODULE_0__["default"]({
   mode: 'history',
-  routes: Routes
+  routes: _routes__WEBPACK_IMPORTED_MODULE_8__["default"]
 });
 /**
  * The following block of code may be used to automatically register your
@@ -60728,6 +60713,35 @@ __webpack_require__.r(__webpack_exports__);
     mainMenu: _components_master_mainMenu__WEBPACK_IMPORTED_MODULE_0__["default"]
   }
 });
+
+/***/ }),
+
+/***/ "./resources/js/routes.js":
+/*!********************************!*\
+  !*** ./resources/js/routes.js ***!
+  \********************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _components_Dashboard__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./components/Dashboard */ "./resources/js/components/Dashboard.vue");
+/* harmony import */ var _components_Profile__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./components/Profile */ "./resources/js/components/Profile.vue");
+/* harmony import */ var _components_Users__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/Users */ "./resources/js/components/Users.vue");
+// components
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = ([{
+  path: '/dashboard',
+  component: _components_Dashboard__WEBPACK_IMPORTED_MODULE_0__["default"]
+}, {
+  path: '/profile',
+  component: _components_Profile__WEBPACK_IMPORTED_MODULE_1__["default"]
+}, {
+  path: '/users',
+  component: _components_Users__WEBPACK_IMPORTED_MODULE_2__["default"]
+}]);
 
 /***/ }),
 

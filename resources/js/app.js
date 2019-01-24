@@ -65,24 +65,13 @@ Vue.component('pagination', require('laravel-vue-pagination'));
 // new vue instant
 window.Fire = new Vue();
 
-// components
-import Dashboard from './components/Dashboard'
-import Profile from './components/Profile'
-import Users from './components/Users'
-
 window.Form = Form;
 Vue.component(HasError.name, HasError);
 Vue.component(AlertError.name, AlertError);
-
-let Routes = [
-    {path: '/dashboard', component: Dashboard},
-    {path: '/profile', component: Profile},
-    {path: '/users', component: Users},
-];
-
+import routes from './routes'
 const router = new VueRouter({
     mode : 'history',
-    routes : Routes,
+    routes : routes,
 });
 
 /**
