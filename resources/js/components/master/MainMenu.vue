@@ -7,7 +7,7 @@
                 <router-link to="dashboard" class="nav-link">
                     <i class="fas fa-tachometer-alt"></i>
                     <p>
-                        {{ $t('message.mainMenu.dashboard')}}
+                        {{ $t('trans.mainMenu.dashboard')}}
                     </p>
                 </router-link>
             </li>
@@ -15,7 +15,7 @@
                 <a href="#" class="nav-link">
                     <i class="fas fa-cogs"></i>
                     <p>
-                        {{ $t('message.mainMenu.management')}}
+                        {{ $t('trans.mainMenu.management')}}
                         <i class="right fa fa-angle-left"></i>
                     </p>
                 </a>
@@ -23,7 +23,7 @@
                     <li class="nav-item">
                         <router-link to="users" class="nav-link">
                             <i class="fas fa-users"></i>
-                            <p>{{ $t('message.mainMenu.users')}}</p>
+                            <p>{{ $t('trans.mainMenu.users')}}</p>
                         </router-link>
                     </li>
                 </ul>
@@ -31,13 +31,13 @@
             <li class="nav-item">
                 <router-link to="/profile" class="nav-link">
                     <i class="fas fa-user"></i>
-                    <p>{{ $t('message.mainMenu.profile')}}</p>
+                    <p>{{ $t('trans.mainMenu.profile')}}</p>
                 </router-link>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="#" @click="logout()">
                     <i class="fas fa-power-off" ></i>
-                    <p>{{ $t('message.mainMenu.logout')}}</p>
+                    <p>{{ $t('trans.mainMenu.logout')}}</p>
                 </a>
             </li>
         </ul>

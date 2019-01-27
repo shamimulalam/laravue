@@ -5,10 +5,10 @@
                 <div class="col-md-8">
                     <div class="card card-default">
                         <div class="card-header">
-                            {{ $t("message.dashboard.title") }}
+                            {{ $t("trans.dashboard.title") }}
                         </div>
                         <div class="card-body">
-                            {{ $t("message.dashboard.details") }}
+                            {{ $t("trans.dashboard.details") }}
                         </div>
                     </div>
                 </div>

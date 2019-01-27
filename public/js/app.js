@@ -45306,7 +45306,7 @@ var render = function() {
             _c("div", { staticClass: "card-header" }, [
               _vm._v(
                 "\n                        " +
-                  _vm._s(_vm.$t("message.dashboard.title")) +
+                  _vm._s(_vm.$t("trans.dashboard.title")) +
                   "\n                    "
               )
             ]),
@@ -45314,7 +45314,7 @@ var render = function() {
             _c("div", { staticClass: "card-body" }, [
               _vm._v(
                 "\n                        " +
-                  _vm._s(_vm.$t("message.dashboard.details")) +
+                  _vm._s(_vm.$t("trans.dashboard.details")) +
                   "\n                    "
               )
             ])
@@ -45354,7 +45354,7 @@ var render = function() {
             _c("div", { staticClass: "card-header" }, [
               _vm._v(
                 "\n                        " +
-                  _vm._s(_vm.$t("message.profile.title")) +
+                  _vm._s(_vm.$t("trans.profile.title")) +
                   "\n                    "
               )
             ]),
@@ -45362,7 +45362,7 @@ var render = function() {
             _c("div", { staticClass: "card-body" }, [
               _vm._v(
                 "\n                        " +
-                  _vm._s(_vm.$t("message.profile.details")) +
+                  _vm._s(_vm.$t("trans.profile.details")) +
                   "\n                    "
               )
             ])
@@ -46112,7 +46112,7 @@ var render = function() {
                 _c("p", [
                   _vm._v(
                     "\n                    " +
-                      _vm._s(_vm.$t("message.mainMenu.dashboard")) +
+                      _vm._s(_vm.$t("trans.mainMenu.dashboard")) +
                       "\n                "
                   )
                 ])
@@ -46129,7 +46129,7 @@ var render = function() {
             _c("p", [
               _vm._v(
                 "\n                    " +
-                  _vm._s(_vm.$t("message.mainMenu.management")) +
+                  _vm._s(_vm.$t("trans.mainMenu.management")) +
                   "\n                    "
               ),
               _c("i", { staticClass: "right fa fa-angle-left" })
@@ -46147,7 +46147,7 @@ var render = function() {
                   [
                     _c("i", { staticClass: "fas fa-users" }),
                     _vm._v(" "),
-                    _c("p", [_vm._v(_vm._s(_vm.$t("message.mainMenu.users")))])
+                    _c("p", [_vm._v(_vm._s(_vm.$t("trans.mainMenu.users")))])
                   ]
                 )
               ],
@@ -46166,7 +46166,7 @@ var render = function() {
               [
                 _c("i", { staticClass: "fas fa-user" }),
                 _vm._v(" "),
-                _c("p", [_vm._v(_vm._s(_vm.$t("message.mainMenu.profile")))])
+                _c("p", [_vm._v(_vm._s(_vm.$t("trans.mainMenu.profile")))])
               ]
             )
           ],
@@ -46188,7 +46188,7 @@ var render = function() {
             [
               _c("i", { staticClass: "fas fa-power-off" }),
               _vm._v(" "),
-              _c("p", [_vm._v(_vm._s(_vm.$t("message.mainMenu.logout")))])
+              _c("p", [_vm._v(_vm._s(_vm.$t("trans.mainMenu.logout")))])
             ]
           )
         ])
@@ -60207,7 +60207,6 @@ var app = new Vue({
   router: router,
   i18n: i18n
 });
-i18n.locale = 'en';
 
 /***/ }),
 
@@ -60683,7 +60682,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  message: {
+  trans: {
     dashboard: _components_dashboard__WEBPACK_IMPORTED_MODULE_0__["default"],
     profile: _components_profile__WEBPACK_IMPORTED_MODULE_1__["default"],
     mainMenu: _components_master_mainMenu__WEBPACK_IMPORTED_MODULE_2__["default"]
@@ -60759,7 +60758,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  message: {
+  trans: {
     dashboard: _components_dashboard__WEBPACK_IMPORTED_MODULE_1__["default"],
     profile: _components_profile__WEBPACK_IMPORTED_MODULE_2__["default"],
     mainMenu: _components_master_mainMenu__WEBPACK_IMPORTED_MODULE_0__["default"]

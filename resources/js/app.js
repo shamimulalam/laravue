@@ -99,4 +99,3 @@ const app = new Vue({
     router,
     i18n
 });
-i18n.locale = 'en'
