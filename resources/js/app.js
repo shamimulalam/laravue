@@ -74,6 +74,7 @@ const router = new VueRouter({
     routes : routes,
 });
 
+
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue
@@ -81,6 +82,7 @@ const router = new VueRouter({
  *
  * Eg. ./components/ExampleComponent.vue -> <example-component></example-component>
  */
+import {auth} from './local-db/auth';
 
 // const files = require.context('./', true, /\.vue$/i)
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
@@ -97,5 +99,7 @@ Vue.component('main-menu', require('./components/master/MainMenu').default);
 const app = new Vue({
     el: '#app',
     router,
-    i18n
+    i18n,
+    store:auth,
+
 });

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\API;
 use App\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
@@ -73,6 +74,25 @@ class UserController extends Controller
     {
         try {
             $data['data']=User::findOrFail($id);
+            $data['code']=111;
+            $data['details']='Success';
+        }catch (\Exception $exception)
+        {
+            $data['code']=999;
+            $data['details']=$exception->getMessage();
+        }
+        return $data;
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function profile()
+    {
+        try {
+            $data['data']=Auth::user();
             $data['code']=111;
             $data['details']='Success';
         }catch (\Exception $exception)
