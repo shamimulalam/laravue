@@ -16,4 +16,5 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->group(function () {
     Route::apiResources(['user'=>'API\UserController']);
     Route::get('profile','API\UserController@profile');
+    Route::get('languages','API\LanguageController@index');
 });

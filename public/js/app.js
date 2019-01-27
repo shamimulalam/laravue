@@ -2155,8 +2155,13 @@ __webpack_require__.r(__webpack_exports__);
   name: 'LocalChanger',
   data: function data() {
     return {
-      langs: ['bn', 'en']
+      langs: this.$store.state.langs
     };
+  },
+  created: function created() {
+    this.$store.dispatch("fetchLangs", {
+      self: this
+    });
   }
 });
 
@@ -46042,9 +46047,9 @@ var render = function() {
             }
           }
         },
-        _vm._l(_vm.langs, function(lang, i) {
-          return _c("option", { key: "Lang" + i, domProps: { value: lang } }, [
-            _vm._v(_vm._s(lang))
+        _vm._l(this.$store.state.langs, function(lang) {
+          return _c("option", { domProps: { value: lang.slug } }, [
+            _vm._v(_vm._s(lang.name))
           ])
         }),
         0
@@ -61675,11 +61680,15 @@ __webpack_require__.r(__webpack_exports__);
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vuex__WEBPACK_IMPORTED_MODULE_1__["default"]);
 var auth = new vuex__WEBPACK_IMPORTED_MODULE_1__["default"].Store({
   state: {
-    auth: {}
+    auth: {},
+    langs: {}
   },
   mutations: {
     FETCH_AUTH: function FETCH_AUTH(state, auth) {
       state.auth = auth;
+    },
+    FETCH_LANG: function FETCH_LANG(state, lang) {
+      state.langs = lang;
     }
   },
   actions: {
@@ -61697,29 +61706,24 @@ var auth = new vuex__WEBPACK_IMPORTED_MODULE_1__["default"].Store({
       }).catch(function (error) {
         console.log(error.statusText);
       });
+    },
+    fetchLangs: function fetchLangs(_ref3, _ref4) {
+      var commit = _ref3.commit;
+      var self = _ref4.self;
+      axios.get("api/languages").then(function (response) {
+        if (response.data.code == 111) {
+          commit("FETCH_LANG", response.data.data);
+        } else {
+          console.log('local-db/langs.js something is wrong');
+        }
+
+        self.filterLangs();
+      }).catch(function (error) {
+        console.log(error.statusText);
+      });
     }
   }
 });
-/*
-export const auth = new Vuex.Store({
-    state: {
-        auth: {}
-    },
-    mutations: {
-        SET_AUTH (state, data) {
-            state.auth = data
-        },
-
-    },
-    mounted: function() {
-        axios.get('api/profile')
-            .then((data) => {
-                // console.log(auth);
-                commit('SET_AUTH', data)
-            })
-    },
-});
-*/
 
 /***/ }),
 

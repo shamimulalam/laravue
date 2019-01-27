@@ -2,7 +2,7 @@
     <div class="locale-changer">
         <div class="input-group input-group-sm">
             <select class="form-control form-control-navbar" v-model="$i18n.locale">
-                <option v-for="(lang, i) in langs" :key="`Lang${i}`" :value="lang">{{ lang }}</option>
+                <option v-for="lang in this.$store.state.langs" :value="lang.slug">{{ lang.name }}</option>
             </select>
         </div>
 
@@ -13,7 +13,10 @@
     export default {
         name: 'LocalChanger',
         data () {
-            return { langs: ['bn', 'en'] }
-        }
+            return { langs: this.$store.state.langs }
+        },
+        created() {
+            this.$store.dispatch("fetchLangs", { self: this })
+        },
     }
 </script>
