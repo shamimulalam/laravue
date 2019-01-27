@@ -35,7 +35,12 @@
                 </router-link>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#" @click="logout()">
+                <a class="nav-link" href="#" @click="logout({
+                title: $t('trans.alert.logout.title'),
+                text: $t('trans.alert.logout.text'),
+                confirmButtonText: $t('trans.alert.logout.confirmButtonText'),
+                cancelButtonText: $t('trans.alert.logout.cancelButtonText'),
+                })">
                     <i class="fas fa-power-off" ></i>
                     <p>{{ $t('trans.mainMenu.logout')}}</p>
                 </a>
@@ -48,15 +53,16 @@
     export default {
         name: "MainMenu",
         methods: {
-            logout: function () {
+            logout: function (alert) {
                 Swal.fire({
-                    title: 'Are you sure?',
-                    text: "You want to logout!",
+                    title: alert.title,
+                    text: alert.text,
                     type: 'warning',
                     showCancelButton: true,
                     confirmButtonColor: '#3085d6',
                     cancelButtonColor: '#d33',
-                    confirmButtonText: 'Yes, Logout!'
+                    confirmButtonText: alert.confirmButtonText,
+                    cancelButtonText: alert.cancelButtonText,
                 }).then((result) => {
                     if (result.value) {
                         this.$Progress.start();

@@ -2217,20 +2217,26 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "MainMenu",
   methods: {
-    logout: function logout() {
+    logout: function logout(alert) {
       var _this = this;
 
       Swal.fire({
-        title: 'Are you sure?',
-        text: "You want to logout!",
+        title: alert.title,
+        text: alert.text,
         type: 'warning',
         showCancelButton: true,
         confirmButtonColor: '#3085d6',
         cancelButtonColor: '#d33',
-        confirmButtonText: 'Yes, Logout!'
+        confirmButtonText: alert.confirmButtonText,
+        cancelButtonText: alert.cancelButtonText
       }).then(function (result) {
         if (result.value) {
           _this.$Progress.start();
@@ -46181,7 +46187,16 @@ var render = function() {
               attrs: { href: "#" },
               on: {
                 click: function($event) {
-                  _vm.logout()
+                  _vm.logout({
+                    title: _vm.$t("trans.alert.logout.title"),
+                    text: _vm.$t("trans.alert.logout.text"),
+                    confirmButtonText: _vm.$t(
+                      "trans.alert.logout.confirmButtonText"
+                    ),
+                    cancelButtonText: _vm.$t(
+                      "trans.alert.logout.cancelButtonText"
+                    )
+                  })
                 }
               }
             },
@@ -60631,6 +60646,26 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/localization/bn/components/master/alert.js":
+/*!*****************************************************************!*\
+  !*** ./resources/js/localization/bn/components/master/alert.js ***!
+  \*****************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ({
+  logout: {
+    title: 'আপনি নিশ্চিত ?',
+    text: "লগআউট করতে চান!",
+    confirmButtonText: 'হ্যাঁ, লগআউট',
+    cancelButtonText: 'বাদ দিন'
+  }
+});
+
+/***/ }),
+
 /***/ "./resources/js/localization/bn/components/master/mainMenu.js":
 /*!********************************************************************!*\
   !*** ./resources/js/localization/bn/components/master/mainMenu.js ***!
@@ -60675,17 +60710,20 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _components_dashboard__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./components/dashboard */ "./resources/js/localization/bn/components/dashboard.js");
-/* harmony import */ var _components_profile__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./components/profile */ "./resources/js/localization/bn/components/profile.js");
-/* harmony import */ var _components_master_mainMenu__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/master/mainMenu */ "./resources/js/localization/bn/components/master/mainMenu.js");
+/* harmony import */ var _components_master_mainMenu__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./components/master/mainMenu */ "./resources/js/localization/bn/components/master/mainMenu.js");
+/* harmony import */ var _components_master_alert__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./components/master/alert */ "./resources/js/localization/bn/components/master/alert.js");
+/* harmony import */ var _components_dashboard__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/dashboard */ "./resources/js/localization/bn/components/dashboard.js");
+/* harmony import */ var _components_profile__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/profile */ "./resources/js/localization/bn/components/profile.js");
+
 
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   trans: {
-    dashboard: _components_dashboard__WEBPACK_IMPORTED_MODULE_0__["default"],
-    profile: _components_profile__WEBPACK_IMPORTED_MODULE_1__["default"],
-    mainMenu: _components_master_mainMenu__WEBPACK_IMPORTED_MODULE_2__["default"]
+    dashboard: _components_dashboard__WEBPACK_IMPORTED_MODULE_2__["default"],
+    profile: _components_profile__WEBPACK_IMPORTED_MODULE_3__["default"],
+    mainMenu: _components_master_mainMenu__WEBPACK_IMPORTED_MODULE_0__["default"],
+    alert: _components_master_alert__WEBPACK_IMPORTED_MODULE_1__["default"]
   }
 });
 
@@ -60703,6 +60741,26 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
   title: 'Dashboard',
   details: 'This is Dashboard'
+});
+
+/***/ }),
+
+/***/ "./resources/js/localization/en/components/master/alert.js":
+/*!*****************************************************************!*\
+  !*** ./resources/js/localization/en/components/master/alert.js ***!
+  \*****************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ({
+  logout: {
+    title: 'Are you sure?',
+    text: "Want's to logout!",
+    confirmButtonText: 'Yes, logout',
+    cancelButtonText: 'Cancel'
+  }
 });
 
 /***/ }),
@@ -60752,16 +60810,19 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_master_mainMenu__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./components/master/mainMenu */ "./resources/js/localization/en/components/master/mainMenu.js");
-/* harmony import */ var _components_dashboard__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./components/dashboard */ "./resources/js/localization/en/components/dashboard.js");
-/* harmony import */ var _components_profile__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/profile */ "./resources/js/localization/en/components/profile.js");
+/* harmony import */ var _components_master_alert__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./components/master/alert */ "./resources/js/localization/en/components/master/alert.js");
+/* harmony import */ var _components_dashboard__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/dashboard */ "./resources/js/localization/en/components/dashboard.js");
+/* harmony import */ var _components_profile__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/profile */ "./resources/js/localization/en/components/profile.js");
+
 
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   trans: {
-    dashboard: _components_dashboard__WEBPACK_IMPORTED_MODULE_1__["default"],
-    profile: _components_profile__WEBPACK_IMPORTED_MODULE_2__["default"],
-    mainMenu: _components_master_mainMenu__WEBPACK_IMPORTED_MODULE_0__["default"]
+    dashboard: _components_dashboard__WEBPACK_IMPORTED_MODULE_2__["default"],
+    profile: _components_profile__WEBPACK_IMPORTED_MODULE_3__["default"],
+    mainMenu: _components_master_mainMenu__WEBPACK_IMPORTED_MODULE_0__["default"],
+    alert: _components_master_alert__WEBPACK_IMPORTED_MODULE_1__["default"]
   }
 });
 
