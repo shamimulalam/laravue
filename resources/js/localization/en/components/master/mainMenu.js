@@ -3,4 +3,5 @@ export  default {
     management: 'Management',
     users: 'Users',
     profile: 'Profile',
+    logout: 'Logout',
 }

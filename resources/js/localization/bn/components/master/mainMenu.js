@@ -3,4 +3,5 @@ export  default {
     management: 'পরিচালনা',
     users: 'ব্যাবহয়ারকারিগণ',
     profile: 'প্রোফাইল',
+    logout: 'লগআউট',
 }

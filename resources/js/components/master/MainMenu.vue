@@ -34,25 +34,51 @@
                     <p>{{ $t('message.mainMenu.profile')}}</p>
                 </router-link>
             </li>
-            <!--<li class="nav-item">
-                <a class="nav-link" href="{{ route('logout') }}"
-                   onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
+            <li class="nav-item">
+                <a class="nav-link" href="#" @click="logout()">
                     <i class="fas fa-power-off" ></i>
-                    <p>Logout</p>
+                    <p>{{ $t('message.mainMenu.logout')}}</p>
                 </a>
-
-                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                    @csrf
-                </form>
-            </li>-->
+            </li>
         </ul>
     </div>
 </template>
 
 <script>
     export default {
-        name: "MainMenu"
+        name: "MainMenu",
+        methods: {
+            logout: function () {
+                Swal.fire({
+                    title: 'Are you sure?',
+                    text: "You want to logout!",
+                    type: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Yes, Logout!'
+                }).then((result) => {
+                    if (result.value) {
+                        this.$Progress.start();
+                        console.log('starting point');
+                        axios.post('logout').then(({ data })=>{
+                            window.location.href = 'login';
+                            this.$Progress.finish();
+                        console.log('success point');
+                        }).catch(()=>{
+                            Swal.fire(
+                                'Failed!',
+                                'Something went wrong',
+                                'warning'
+                            );
+                            this.$Progress.fail();
+                        console.log('catch point');
+                        });
+                        console.log('Exit point');
+                    }
+                })
+            }
+        }
     }
 </script>
 

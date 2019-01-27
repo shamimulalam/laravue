@@ -2217,14 +2217,44 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: "MainMenu"
+  name: "MainMenu",
+  methods: {
+    logout: function logout() {
+      var _this = this;
+
+      Swal.fire({
+        title: 'Are you sure?',
+        text: "You want to logout!",
+        type: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes, Logout!'
+      }).then(function (result) {
+        if (result.value) {
+          _this.$Progress.start();
+
+          console.log('starting point');
+          axios.post('logout').then(function (_ref) {
+            var data = _ref.data;
+            window.location.href = 'login';
+
+            _this.$Progress.finish();
+
+            console.log('success point');
+          }).catch(function () {
+            Swal.fire('Failed!', 'Something went wrong', 'warning');
+
+            _this.$Progress.fail();
+
+            console.log('catch point');
+          });
+          console.log('Exit point');
+        }
+      });
+    }
+  }
 });
 
 /***/ }),
@@ -46141,7 +46171,27 @@ var render = function() {
             )
           ],
           1
-        )
+        ),
+        _vm._v(" "),
+        _c("li", { staticClass: "nav-item" }, [
+          _c(
+            "a",
+            {
+              staticClass: "nav-link",
+              attrs: { href: "#" },
+              on: {
+                click: function($event) {
+                  _vm.logout()
+                }
+              }
+            },
+            [
+              _c("i", { staticClass: "fas fa-power-off" }),
+              _vm._v(" "),
+              _c("p", [_vm._v(_vm._s(_vm.$t("message.mainMenu.logout")))])
+            ]
+          )
+        ])
       ]
     )
   ])
@@ -60595,7 +60645,8 @@ __webpack_require__.r(__webpack_exports__);
   dashboard: 'ড্যাশবোর্ড',
   management: 'পরিচালনা',
   users: 'ব্যাবহয়ারকারিগণ',
-  profile: 'প্রোফাইল'
+  profile: 'প্রোফাইল',
+  logout: 'লগআউট'
 });
 
 /***/ }),
@@ -60670,7 +60721,8 @@ __webpack_require__.r(__webpack_exports__);
   dashboard: 'Dashboard',
   management: 'Management',
   users: 'Users',
-  profile: 'Profile'
+  profile: 'Profile',
+  logout: 'Logout'
 });
 
 /***/ }),
