@@ -2004,7 +2004,7 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       this.$Progress.start();
-      this.form.post('api/user').then(function () {
+      this.form.post('api/' + this.$i18n.locale + '/user').then(function () {
         Fire.$emit('CHANGE');
 
         _this.form.reset();
@@ -2072,7 +2072,7 @@ __webpack_require__.r(__webpack_exports__);
 
       var page = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 0;
       this.$Progress.start();
-      axios.get('api/user?page=' + page).then(function (_ref3) {
+      axios.get('api/' + this.$i18n.locale + '/user?page=' + page).then(function (_ref3) {
         var data = _ref3.data;
 
         if (data.code && data.code == 111) {
@@ -61192,18 +61192,16 @@ module.exports = function(module) {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue_router__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue-router */ "./node_modules/vue-router/dist/vue-router.esm.js");
-/* harmony import */ var vue_i18n__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue-i18n */ "./node_modules/vue-i18n/dist/vue-i18n.esm.js");
-/* harmony import */ var _localization_en_main__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./localization/en/main */ "./resources/js/localization/en/main.js");
-/* harmony import */ var _localization_bn_main__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./localization/bn/main */ "./resources/js/localization/bn/main.js");
-/* harmony import */ var vue_progressbar__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! vue-progressbar */ "./node_modules/vue-progressbar/dist/vue-progressbar.js");
-/* harmony import */ var vue_progressbar__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(vue_progressbar__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var vform__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! vform */ "./node_modules/vform/dist/vform.common.js");
-/* harmony import */ var vform__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(vform__WEBPACK_IMPORTED_MODULE_5__);
-/* harmony import */ var sweetalert2_src_sweetalert2_scss__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! sweetalert2/src/sweetalert2.scss */ "./node_modules/sweetalert2/src/sweetalert2.scss");
-/* harmony import */ var sweetalert2_src_sweetalert2_scss__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(sweetalert2_src_sweetalert2_scss__WEBPACK_IMPORTED_MODULE_6__);
-/* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! sweetalert2 */ "./node_modules/sweetalert2/src/sweetalert2.js");
-/* harmony import */ var _routes__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./routes */ "./resources/js/routes.js");
-/* harmony import */ var _local_db_auth__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./local-db/auth */ "./resources/js/local-db/auth.js");
+/* harmony import */ var _localization_i18n__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./localization/i18n */ "./resources/js/localization/i18n.js");
+/* harmony import */ var vue_progressbar__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! vue-progressbar */ "./node_modules/vue-progressbar/dist/vue-progressbar.js");
+/* harmony import */ var vue_progressbar__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(vue_progressbar__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var vform__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! vform */ "./node_modules/vform/dist/vform.common.js");
+/* harmony import */ var vform__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(vform__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var sweetalert2_src_sweetalert2_scss__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! sweetalert2/src/sweetalert2.scss */ "./node_modules/sweetalert2/src/sweetalert2.scss");
+/* harmony import */ var sweetalert2_src_sweetalert2_scss__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(sweetalert2_src_sweetalert2_scss__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! sweetalert2 */ "./node_modules/sweetalert2/src/sweetalert2.js");
+/* harmony import */ var _routes__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./routes */ "./resources/js/routes.js");
+/* harmony import */ var _local_db_auth__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./local-db/auth */ "./resources/js/local-db/auth.js");
 /**
  * First we will load all of this project's JavaScript dependencies which
  * includes Vue and other libraries. It is a great starting point when
@@ -61217,25 +61215,11 @@ window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.
 Vue.use(vue_router__WEBPACK_IMPORTED_MODULE_0__["default"]); // ES6 Modules or TypeScript
 // Multilanguage
 
-
-Vue.use(vue_i18n__WEBPACK_IMPORTED_MODULE_1__["default"]);
-
-
-var messages = {
-  en: _localization_en_main__WEBPACK_IMPORTED_MODULE_2__["default"],
-  bn: _localization_bn_main__WEBPACK_IMPORTED_MODULE_3__["default"]
-}; // Create VueI18n instance with options
-
-var i18n = new vue_i18n__WEBPACK_IMPORTED_MODULE_1__["default"]({
-  locale: 'bn',
-  // set locale
-  messages: messages // set locale messages
-
-}); // Multilanguage
+ // Multilanguage
 // Vue progress bar
 
 
-Vue.use(vue_progressbar__WEBPACK_IMPORTED_MODULE_4___default.a, {
+Vue.use(vue_progressbar__WEBPACK_IMPORTED_MODULE_2___default.a, {
   color: 'rgb(143, 255, 199)',
   failedColor: 'red',
   height: '2px'
@@ -61245,8 +61229,8 @@ Vue.use(vue_progressbar__WEBPACK_IMPORTED_MODULE_4___default.a, {
 
 
 
-window.Swal = sweetalert2__WEBPACK_IMPORTED_MODULE_7__["default"];
-var Toast = sweetalert2__WEBPACK_IMPORTED_MODULE_7__["default"].mixin({
+window.Swal = sweetalert2__WEBPACK_IMPORTED_MODULE_5__["default"];
+var Toast = sweetalert2__WEBPACK_IMPORTED_MODULE_5__["default"].mixin({
   toast: true,
   position: 'top-end',
   showConfirmButton: false,
@@ -61258,13 +61242,13 @@ window.Toast = Toast; // sweetalert2 end
 Vue.component('pagination', __webpack_require__(/*! laravel-vue-pagination */ "./node_modules/laravel-vue-pagination/dist/laravel-vue-pagination.common.js")); // new vue instant
 
 window.Fire = new Vue();
-window.Form = vform__WEBPACK_IMPORTED_MODULE_5__["Form"];
-Vue.component(vform__WEBPACK_IMPORTED_MODULE_5__["HasError"].name, vform__WEBPACK_IMPORTED_MODULE_5__["HasError"]);
-Vue.component(vform__WEBPACK_IMPORTED_MODULE_5__["AlertError"].name, vform__WEBPACK_IMPORTED_MODULE_5__["AlertError"]);
+window.Form = vform__WEBPACK_IMPORTED_MODULE_3__["Form"];
+Vue.component(vform__WEBPACK_IMPORTED_MODULE_3__["HasError"].name, vform__WEBPACK_IMPORTED_MODULE_3__["HasError"]);
+Vue.component(vform__WEBPACK_IMPORTED_MODULE_3__["AlertError"].name, vform__WEBPACK_IMPORTED_MODULE_3__["AlertError"]);
 
 var router = new vue_router__WEBPACK_IMPORTED_MODULE_0__["default"]({
   mode: 'history',
-  routes: _routes__WEBPACK_IMPORTED_MODULE_8__["default"]
+  routes: _routes__WEBPACK_IMPORTED_MODULE_6__["default"]
 });
 /**
  * The following block of code may be used to automatically register your
@@ -61288,8 +61272,8 @@ Vue.component('main-menu', __webpack_require__(/*! ./components/master/MainMenu 
 var app = new Vue({
   el: '#app',
   router: router,
-  i18n: i18n,
-  store: _local_db_auth__WEBPACK_IMPORTED_MODULE_9__["auth"]
+  i18n: _localization_i18n__WEBPACK_IMPORTED_MODULE_1__["default"],
+  store: _local_db_auth__WEBPACK_IMPORTED_MODULE_7__["auth"]
 });
 
 /***/ }),
@@ -61712,9 +61696,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vue__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
+/* harmony import */ var _localization_i18n__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../localization/i18n */ "./resources/js/localization/i18n.js");
 
 
-vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vuex__WEBPACK_IMPORTED_MODULE_1__["default"]);
+
+vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vuex__WEBPACK_IMPORTED_MODULE_1__["default"], _localization_i18n__WEBPACK_IMPORTED_MODULE_2__["default"]);
 var auth = new vuex__WEBPACK_IMPORTED_MODULE_1__["default"].Store({
   state: {
     auth: {},
@@ -61732,7 +61718,7 @@ var auth = new vuex__WEBPACK_IMPORTED_MODULE_1__["default"].Store({
     fetchAuth: function fetchAuth(_ref, _ref2) {
       var commit = _ref.commit;
       var self = _ref2.self;
-      axios.get("api/profile").then(function (response) {
+      axios.get("api/" + _localization_i18n__WEBPACK_IMPORTED_MODULE_2__["default"].locale + "/profile").then(function (response) {
         if (response.data.code == 111) {
           commit("FETCH_AUTH", response.data.data);
         } else {
@@ -61747,7 +61733,7 @@ var auth = new vuex__WEBPACK_IMPORTED_MODULE_1__["default"].Store({
     fetchLangs: function fetchLangs(_ref3, _ref4) {
       var commit = _ref3.commit;
       var self = _ref4.self;
-      axios.get("api/languages").then(function (response) {
+      axios.get("api/" + _localization_i18n__WEBPACK_IMPORTED_MODULE_2__["default"].locale + "/languages").then(function (response) {
         if (response.data.code == 111) {
           commit("FETCH_LANG", response.data.data);
         } else {
@@ -61959,6 +61945,40 @@ __webpack_require__.r(__webpack_exports__);
     alert: _components_master_alert__WEBPACK_IMPORTED_MODULE_1__["default"]
   }
 });
+
+/***/ }),
+
+/***/ "./resources/js/localization/i18n.js":
+/*!*******************************************!*\
+  !*** ./resources/js/localization/i18n.js ***!
+  \*******************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vue__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var vue_i18n__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue-i18n */ "./node_modules/vue-i18n/dist/vue-i18n.esm.js");
+/* harmony import */ var _en_main__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./en/main */ "./resources/js/localization/en/main.js");
+/* harmony import */ var _bn_main__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./bn/main */ "./resources/js/localization/bn/main.js");
+// Multilanguage
+
+
+vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_i18n__WEBPACK_IMPORTED_MODULE_1__["default"]);
+
+
+var messages = {
+  en: _en_main__WEBPACK_IMPORTED_MODULE_2__["default"],
+  bn: _bn_main__WEBPACK_IMPORTED_MODULE_3__["default"]
+}; // Create VueI18n instance with options
+
+/* harmony default export */ __webpack_exports__["default"] = (new vue_i18n__WEBPACK_IMPORTED_MODULE_1__["default"]({
+  locale: 'bn',
+  // set locale
+  messages: messages // set locale messages
+
+}));
 
 /***/ }),
 

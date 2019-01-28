@@ -154,7 +154,7 @@
             },
             createUser: function(){
                 this.$Progress.start();
-                this.form.post('api/user').then(()=>{
+                this.form.post('api/'+this.$i18n.locale+'/user').then(()=>{
                     Fire.$emit('CHANGE');
                     this.form.reset();
                     $('#userModal').modal('hide');
@@ -216,7 +216,7 @@
             },
             fetchUsers: function (page = 0) {
                 this.$Progress.start();
-                axios.get('api/user?page='+page).then(({ data })=> {
+                axios.get('api/' + this.$i18n.locale + '/user?page='+page).then(({ data })=> {
                     if(data.code && data.code==111)
                     {
                         this.users= data.data;

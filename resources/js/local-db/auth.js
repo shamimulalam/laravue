@@ -1,7 +1,7 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
-
-Vue.use(Vuex);
+import i18n from '../localization/i18n'
+Vue.use(Vuex,i18n);
 
 
 
@@ -20,7 +20,7 @@ export const auth = new Vuex.Store({
     },
     actions: {
         fetchAuth({ commit }, { self })  {
-            axios.get("api/profile")
+            axios.get("api/"+i18n.locale+"/profile")
                 .then((response) => {
                     if(response.data.code==111)
                     {
@@ -35,7 +35,7 @@ export const auth = new Vuex.Store({
                 }));
         },
         fetchLangs({ commit }, { self })  {
-            axios.get("api/languages")
+            axios.get("api/"+i18n.locale+"/languages")
                 .then((response) => {
                     if(response.data.code==111)
                     {
