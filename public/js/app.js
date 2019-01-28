@@ -1991,6 +1991,8 @@ __webpack_require__.r(__webpack_exports__);
         bio: ''
       }),
       users: {},
+      serial: 1,
+      serialIndex: 1,
       editMode: false
     };
   },
@@ -2076,7 +2078,9 @@ __webpack_require__.r(__webpack_exports__);
         var data = _ref3.data;
 
         if (data.code && data.code == 111) {
-          _this4.users = data.data;
+          _this4.users = data.data.users;
+          _this4.serial = data.data.serial;
+          console.log(_this4.users);
         } else {
           Swal.fire('Unexpected error !', data.details, 'warning');
         }

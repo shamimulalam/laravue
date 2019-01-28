@@ -142,6 +142,8 @@
                     bio : '',
                 }),
                 users: {},
+                serial: 1,
+                serialIndex: 1,
                 editMode: false,
             }
         },
@@ -219,7 +221,10 @@
                 axios.get('api/' + this.$i18n.locale + '/user?page='+page).then(({ data })=> {
                     if(data.code && data.code==111)
                     {
-                        this.users= data.data;
+                        this.users= data.data.users;
+                        this.serial= data.data.serial;
+                        console.log(this.users);
+
                     }else{
                         Swal.fire(
                             'Unexpected error !',

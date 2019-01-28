@@ -18,7 +18,8 @@ class UserController extends Controller
     public function index()
     {
         try {
-            $data['data']=User::latest()->paginate(10);
+            $data['data']['users']=User::latest()->paginate(10);
+            $data['data']['serial'] = managePagination($data['data']['users']);
             $data['code']=111;
             $data['details']='Success';
         }catch (\Exception $exception)
