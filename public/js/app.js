@@ -2242,6 +2242,43 @@ __webpack_require__.r(__webpack_exports__);
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "MainMenu",
+  methods: {
+    logout: function logout(alert) {
+      var _this = this;
+
+      Swal.fire({
+        title: alert.title,
+        text: alert.text,
+        type: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: alert.confirmButtonText,
+        cancelButtonText: alert.cancelButtonText
+      }).then(function (result) {
+        if (result.value) {
+          _this.$Progress.start();
+
+          console.log('starting point');
+          axios.post('logout').then(function (_ref) {
+            var data = _ref.data;
+            window.location.href = 'login';
+
+            _this.$Progress.finish();
+
+            console.log('success point');
+          }).catch(function () {
+            Swal.fire('Failed!', 'Something went wrong', 'warning');
+
+            _this.$Progress.fail();
+
+            console.log('catch point');
+          });
+          console.log('Exit point');
+        }
+      });
+    }
+  },
   created: function created() {
     this.$store.dispatch("fetchAuth", {
       self: this

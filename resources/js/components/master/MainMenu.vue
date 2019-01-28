@@ -66,6 +66,39 @@
     export default {
         name: "MainMenu",
 
+        methods: {
+            logout: function (alert) {
+                Swal.fire({
+                    title: alert.title,
+                    text: alert.text,
+                    type: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: alert.confirmButtonText,
+                    cancelButtonText: alert.cancelButtonText,
+                }).then((result) => {
+                    if (result.value) {
+                        this.$Progress.start();
+                        console.log('starting point');
+                        axios.post('logout').then(({ data })=>{
+                            window.location.href = 'login';
+                            this.$Progress.finish();
+                            console.log('success point');
+                        }).catch(()=>{
+                            Swal.fire(
+                                'Failed!',
+                                'Something went wrong',
+                                'warning'
+                            );
+                            this.$Progress.fail();
+                            console.log('catch point');
+                        });
+                        console.log('Exit point');
+                    }
+                })
+            }
+        },
         created() {
             this.$store.dispatch("fetchAuth", { self: this })
         },
