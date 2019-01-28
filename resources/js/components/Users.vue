@@ -5,9 +5,9 @@
 
                 <div class="card">
                     <div class="card-header">
-                        <h3 class="card-title">Users</h3>
+                        <h3 class="card-title">{{ $t("trans.user.title") }}</h3>
                         <div class="card-tools">
-                            <button type="button" class="btn btn-success" @click="createUserModal"><i class="fas fa-user-plus"></i> Add new</button>
+                            <button type="button" class="btn btn-success" @click="createUserModal"><i class="fas fa-user-plus"></i> {{ $t("trans.button.addNew") }}</button>
                         </div>
                     </div>
                     <!-- /.card-header -->
@@ -18,11 +18,11 @@
                                     <table id="example1" class="table table-bordered table-striped">
                                         <thead>
                                         <tr role="row">
-                                            <th >ID</th>
-                                            <th >Name</th>
-                                            <th >Email</th>
-                                            <th >Phone</th>
-                                            <th >Actions</th>
+                                            <th >{{ $t("trans.common.serial") }}</th>
+                                            <th >{{ $t("trans.common.name") }}</th>
+                                            <th >{{ $t("trans.common.email") }}</th>
+                                            <th >{{ $t("trans.common.phone") }}</th>
+                                            <th >{{ $t("trans.common.actions") }}</th>
                                         </tr>
                                         </thead>
                                         <tbody>
@@ -46,10 +46,10 @@
                             </div>
                             <div class="row">
                                 <div class="col-sm-12 col-md-5">
-                                    <div class="dataTables_info" id="example1_info" role="status" aria-live="polite">Showing {{ ((users.current_page-1)*users.per_page)+1 }} to
+                                    <div class="dataTables_info" id="example1_info" role="status" aria-live="polite">{{ $t('trans.button.pagination.showing') }} {{ ((users.current_page-1)*users.per_page)+1 }} {{ $t('trans.button.pagination.to') }}
                                         <span v-if="users.current_page*users.per_page < users.total">{{ users.current_page*users.per_page }}</span>
                                         <span v-else>{{ users.total }}</span>
-                                        of {{ users.total }} entries</div>
+                                        {{ $t('trans.button.pagination.of') }} {{ users.total }} {{ $t('trans.button.pagination.entries') }}</div>
                                 </div>
                                 <div class="col-sm-12 col-md-7">
                                     <div>

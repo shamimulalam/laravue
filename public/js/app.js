@@ -45428,7 +45428,9 @@ var render = function() {
       _c("div", { staticClass: "col-12" }, [
         _c("div", { staticClass: "card" }, [
           _c("div", { staticClass: "card-header" }, [
-            _c("h3", { staticClass: "card-title" }, [_vm._v("Users")]),
+            _c("h3", { staticClass: "card-title" }, [
+              _vm._v(_vm._s(_vm.$t("trans.user.title")))
+            ]),
             _vm._v(" "),
             _c("div", { staticClass: "card-tools" }, [
               _c(
@@ -45440,7 +45442,7 @@ var render = function() {
                 },
                 [
                   _c("i", { staticClass: "fas fa-user-plus" }),
-                  _vm._v(" Add new")
+                  _vm._v(" " + _vm._s(_vm.$t("trans.button.addNew")))
                 ]
               )
             ])
@@ -45457,7 +45459,29 @@ var render = function() {
                       attrs: { id: "example1" }
                     },
                     [
-                      _vm._m(0),
+                      _c("thead", [
+                        _c("tr", { attrs: { role: "row" } }, [
+                          _c("th", [
+                            _vm._v(_vm._s(_vm.$t("trans.common.serial")))
+                          ]),
+                          _vm._v(" "),
+                          _c("th", [
+                            _vm._v(_vm._s(_vm.$t("trans.common.name")))
+                          ]),
+                          _vm._v(" "),
+                          _c("th", [
+                            _vm._v(_vm._s(_vm.$t("trans.common.email")))
+                          ]),
+                          _vm._v(" "),
+                          _c("th", [
+                            _vm._v(_vm._s(_vm.$t("trans.common.phone")))
+                          ]),
+                          _vm._v(" "),
+                          _c("th", [
+                            _vm._v(_vm._s(_vm.$t("trans.common.actions")))
+                          ])
+                        ])
+                      ]),
                       _vm._v(" "),
                       _c(
                         "tbody",
@@ -45521,12 +45545,15 @@ var render = function() {
                     },
                     [
                       _vm._v(
-                        "Showing " +
+                        _vm._s(_vm.$t("trans.button.pagination.showing")) +
+                          " " +
                           _vm._s(
                             (_vm.users.current_page - 1) * _vm.users.per_page +
                               1
                           ) +
-                          " to\n                                    "
+                          " " +
+                          _vm._s(_vm.$t("trans.button.pagination.to")) +
+                          "\n                                    "
                       ),
                       _vm.users.current_page * _vm.users.per_page <
                       _vm.users.total
@@ -45539,9 +45566,12 @@ var render = function() {
                           ])
                         : _c("span", [_vm._v(_vm._s(_vm.users.total))]),
                       _vm._v(
-                        "\n                                    of " +
+                        "\n                                    " +
+                          _vm._s(_vm.$t("trans.button.pagination.of")) +
+                          " " +
                           _vm._s(_vm.users.total) +
-                          " entries"
+                          " " +
+                          _vm._s(_vm.$t("trans.button.pagination.entries"))
                       )
                     ]
                   )
@@ -45620,7 +45650,7 @@ var render = function() {
                   [_vm._v("Edit User")]
                 ),
                 _vm._v(" "),
-                _vm._m(1)
+                _vm._m(0)
               ]),
               _vm._v(" "),
               _c(
@@ -45995,24 +46025,6 @@ var render = function() {
   ])
 }
 var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("thead", [
-      _c("tr", { attrs: { role: "row" } }, [
-        _c("th", [_vm._v("ID")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("Name")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("Email")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("Phone")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("Actions")])
-      ])
-    ])
-  },
   function() {
     var _vm = this
     var _h = _vm.$createElement
@@ -61786,6 +61798,46 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/localization/bn/components/master/buttons.js":
+/*!*******************************************************************!*\
+  !*** ./resources/js/localization/bn/components/master/buttons.js ***!
+  \*******************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ({
+  addNew: 'নতুন যোগ করুন',
+  pagination: {
+    showing: 'দেখাচ্ছে',
+    to: 'থেকে',
+    of: 'সর্বমোট',
+    entries: 'এর মধ্য'
+  }
+});
+
+/***/ }),
+
+/***/ "./resources/js/localization/bn/components/master/commons.js":
+/*!*******************************************************************!*\
+  !*** ./resources/js/localization/bn/components/master/commons.js ***!
+  \*******************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ({
+  serial: 'ক্রমিক',
+  name: 'নাম',
+  email: 'ইমেইল',
+  phone: 'ফোন',
+  actions: 'ক্রিয়াকলাপ'
+});
+
+/***/ }),
+
 /***/ "./resources/js/localization/bn/components/master/mainMenu.js":
 /*!********************************************************************!*\
   !*** ./resources/js/localization/bn/components/master/mainMenu.js ***!
@@ -61821,6 +61873,21 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/localization/bn/components/users.js":
+/*!**********************************************************!*\
+  !*** ./resources/js/localization/bn/components/users.js ***!
+  \**********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ({
+  title: 'ব্যবহারকারীগণ'
+});
+
+/***/ }),
+
 /***/ "./resources/js/localization/bn/main.js":
 /*!**********************************************!*\
   !*** ./resources/js/localization/bn/main.js ***!
@@ -61832,18 +61899,27 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_master_mainMenu__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./components/master/mainMenu */ "./resources/js/localization/bn/components/master/mainMenu.js");
 /* harmony import */ var _components_master_alert__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./components/master/alert */ "./resources/js/localization/bn/components/master/alert.js");
-/* harmony import */ var _components_dashboard__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/dashboard */ "./resources/js/localization/bn/components/dashboard.js");
-/* harmony import */ var _components_profile__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/profile */ "./resources/js/localization/bn/components/profile.js");
+/* harmony import */ var _components_master_buttons__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/master/buttons */ "./resources/js/localization/bn/components/master/buttons.js");
+/* harmony import */ var _components_master_commons__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/master/commons */ "./resources/js/localization/bn/components/master/commons.js");
+/* harmony import */ var _components_dashboard__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./components/dashboard */ "./resources/js/localization/bn/components/dashboard.js");
+/* harmony import */ var _components_profile__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./components/profile */ "./resources/js/localization/bn/components/profile.js");
+/* harmony import */ var _components_users__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./components/users */ "./resources/js/localization/bn/components/users.js");
+
+
+
 
 
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   trans: {
-    dashboard: _components_dashboard__WEBPACK_IMPORTED_MODULE_2__["default"],
-    profile: _components_profile__WEBPACK_IMPORTED_MODULE_3__["default"],
+    dashboard: _components_dashboard__WEBPACK_IMPORTED_MODULE_4__["default"],
+    profile: _components_profile__WEBPACK_IMPORTED_MODULE_5__["default"],
     mainMenu: _components_master_mainMenu__WEBPACK_IMPORTED_MODULE_0__["default"],
-    alert: _components_master_alert__WEBPACK_IMPORTED_MODULE_1__["default"]
+    alert: _components_master_alert__WEBPACK_IMPORTED_MODULE_1__["default"],
+    button: _components_master_buttons__WEBPACK_IMPORTED_MODULE_2__["default"],
+    common: _components_master_commons__WEBPACK_IMPORTED_MODULE_3__["default"],
+    user: _components_users__WEBPACK_IMPORTED_MODULE_6__["default"]
   }
 });
 
@@ -61885,6 +61961,46 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/localization/en/components/master/buttons.js":
+/*!*******************************************************************!*\
+  !*** ./resources/js/localization/en/components/master/buttons.js ***!
+  \*******************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ({
+  addNew: 'Add New',
+  pagination: {
+    showing: 'Showing',
+    to: 'to',
+    of: 'of',
+    entries: 'entries'
+  }
+});
+
+/***/ }),
+
+/***/ "./resources/js/localization/en/components/master/commons.js":
+/*!*******************************************************************!*\
+  !*** ./resources/js/localization/en/components/master/commons.js ***!
+  \*******************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ({
+  serial: 'Serial',
+  name: 'Name',
+  email: 'Email',
+  phone: 'Phone',
+  actions: 'Actions'
+});
+
+/***/ }),
+
 /***/ "./resources/js/localization/en/components/master/mainMenu.js":
 /*!********************************************************************!*\
   !*** ./resources/js/localization/en/components/master/mainMenu.js ***!
@@ -61920,6 +62036,22 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/localization/en/components/users.js":
+/*!**********************************************************!*\
+  !*** ./resources/js/localization/en/components/users.js ***!
+  \**********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ({
+  title: 'Users',
+  details: 'This is profile page'
+});
+
+/***/ }),
+
 /***/ "./resources/js/localization/en/main.js":
 /*!**********************************************!*\
   !*** ./resources/js/localization/en/main.js ***!
@@ -61931,18 +62063,27 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_master_mainMenu__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./components/master/mainMenu */ "./resources/js/localization/en/components/master/mainMenu.js");
 /* harmony import */ var _components_master_alert__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./components/master/alert */ "./resources/js/localization/en/components/master/alert.js");
-/* harmony import */ var _components_dashboard__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/dashboard */ "./resources/js/localization/en/components/dashboard.js");
-/* harmony import */ var _components_profile__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/profile */ "./resources/js/localization/en/components/profile.js");
+/* harmony import */ var _components_master_buttons__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/master/buttons */ "./resources/js/localization/en/components/master/buttons.js");
+/* harmony import */ var _components_master_commons__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/master/commons */ "./resources/js/localization/en/components/master/commons.js");
+/* harmony import */ var _components_dashboard__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./components/dashboard */ "./resources/js/localization/en/components/dashboard.js");
+/* harmony import */ var _components_profile__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./components/profile */ "./resources/js/localization/en/components/profile.js");
+/* harmony import */ var _components_users__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./components/users */ "./resources/js/localization/en/components/users.js");
+
+
+
 
 
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   trans: {
-    dashboard: _components_dashboard__WEBPACK_IMPORTED_MODULE_2__["default"],
-    profile: _components_profile__WEBPACK_IMPORTED_MODULE_3__["default"],
+    dashboard: _components_dashboard__WEBPACK_IMPORTED_MODULE_4__["default"],
+    profile: _components_profile__WEBPACK_IMPORTED_MODULE_5__["default"],
     mainMenu: _components_master_mainMenu__WEBPACK_IMPORTED_MODULE_0__["default"],
-    alert: _components_master_alert__WEBPACK_IMPORTED_MODULE_1__["default"]
+    alert: _components_master_alert__WEBPACK_IMPORTED_MODULE_1__["default"],
+    button: _components_master_buttons__WEBPACK_IMPORTED_MODULE_2__["default"],
+    common: _components_master_commons__WEBPACK_IMPORTED_MODULE_3__["default"],
+    user: _components_users__WEBPACK_IMPORTED_MODULE_6__["default"]
   }
 });
 
@@ -61974,7 +62115,7 @@ var messages = {
 }; // Create VueI18n instance with options
 
 /* harmony default export */ __webpack_exports__["default"] = (new vue_i18n__WEBPACK_IMPORTED_MODULE_1__["default"]({
-  locale: 'bn',
+  locale: 'en',
   // set locale
   messages: messages // set locale messages
 
