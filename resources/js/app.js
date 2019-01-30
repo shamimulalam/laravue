@@ -19,7 +19,6 @@ import i18n from './localization/i18n'
 
 
 
-
 // Multilanguage
 
 // Vue progress bar
@@ -82,10 +81,18 @@ Vue.component('main-menu', require('./components/master/MainMenu').default);
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
+// Global function
+Vue.mixin({
+    methods: {
+        incrementSerial(obj, index) {
+            return ((obj.current_page - 1) * obj.per_page) + (index + 1)
+        }
+    }
+});
+
 const app = new Vue({
     el: '#app',
     router,
     i18n,
     store:auth,
-
 });

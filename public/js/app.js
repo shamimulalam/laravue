@@ -1991,8 +1991,6 @@ __webpack_require__.r(__webpack_exports__);
         bio: ''
       }),
       users: {},
-      serial: 1,
-      serialIndex: 1,
       editMode: false
     };
   },
@@ -2079,8 +2077,6 @@ __webpack_require__.r(__webpack_exports__);
 
         if (data.code && data.code == 111) {
           _this4.users = data.data.users;
-          _this4.serial = data.data.serial;
-          console.log(_this4.users);
         } else {
           Swal.fire('Unexpected error !', data.details, 'warning');
         }
@@ -2129,7 +2125,7 @@ __webpack_require__.r(__webpack_exports__);
     this.fetchUsers();
     Fire.$on('CHANGE', function () {
       return _this6.fetchUsers();
-    }); // setInterval(()=>this.fetchUsers(),3000);
+    });
   }
 });
 
@@ -40258,7 +40254,7 @@ __webpack_require__.r(__webpack_exports__);
 /*!*******************************************************!*\
   !*** ./node_modules/sweetalert2/src/staticMethods.js ***!
   \*******************************************************/
-/*! exports provided: argsToParams, getContainer, getPopup, getTitle, getContent, getImage, getIcons, getCloseButton, getActions, getConfirmButton, getCancelButton, getFooter, getFocusableElements, getValidationMessage, isLoading, isVisible, clickConfirm, clickCancel, fire, mixin, queue, getQueueStep, insertQueueStep, deleteQueueStep, showLoading, enableLoading, getTimerLeft, stopTimer, resumeTimer, toggleTimer, increaseTimer, isTimerRunning, isValidParameter, isUpdatableParameter, isDeprecatedParameter */
+/*! exports provided: isValidParameter, isUpdatableParameter, isDeprecatedParameter, argsToParams, getContainer, getPopup, getTitle, getContent, getImage, getIcons, getCloseButton, getActions, getConfirmButton, getCancelButton, getFooter, getFocusableElements, getValidationMessage, isLoading, isVisible, clickConfirm, clickCancel, fire, mixin, queue, getQueueStep, insertQueueStep, deleteQueueStep, showLoading, enableLoading, getTimerLeft, stopTimer, resumeTimer, toggleTimer, increaseTimer, isTimerRunning */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -45489,9 +45485,13 @@ var render = function() {
                       _vm._v(" "),
                       _c(
                         "tbody",
-                        _vm._l(_vm.users.data, function(user) {
+                        _vm._l(_vm.users.data, function(user, index) {
                           return _c("tr", { key: user.id }, [
-                            _c("td", [_vm._v(_vm._s(user.id))]),
+                            _c("td", [
+                              _vm._v(
+                                _vm._s(_vm.incrementSerial(_vm.users, index))
+                              )
+                            ]),
                             _vm._v(" "),
                             _c("td", [_vm._v(_vm._s(user.name))]),
                             _vm._v(" "),
@@ -61284,7 +61284,15 @@ Vue.component('main-menu', __webpack_require__(/*! ./components/master/MainMenu 
  * the page. Then, you may begin adding components to this application
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
+// Global function
 
+Vue.mixin({
+  methods: {
+    incrementSerial: function incrementSerial(obj, index) {
+      return (obj.current_page - 1) * obj.per_page + (index + 1);
+    }
+  }
+});
 var app = new Vue({
   el: '#app',
   router: router,

@@ -19,7 +19,6 @@ class UserController extends Controller
     {
         try {
             $data['data']['users']=User::latest()->paginate(10);
-            $data['data']['serial'] = managePagination($data['data']['users']);
             $data['code']=111;
             $data['details']='Success';
         }catch (\Exception $exception)
@@ -29,7 +28,6 @@ class UserController extends Controller
         }
         return $data;
     }
-
     /**
      * Store a newly created resource in storage.
      *

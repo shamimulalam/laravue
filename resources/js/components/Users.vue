@@ -26,8 +26,8 @@
                                         </tr>
                                         </thead>
                                         <tbody>
-                                        <tr v-for="user in users.data" :key="user.id">
-                                            <td>{{ user.id }}</td>
+                                        <tr v-for="(user,index) in users.data" :key="user.id">
+                                            <td >{{ incrementSerial(users,index) }}</td>
                                             <td>{{ user.name }}</td>
                                             <td>{{ user.email }}</td>
                                             <td>{{ user.phone }}</td>
@@ -142,8 +142,6 @@
                     bio : '',
                 }),
                 users: {},
-                serial: 1,
-                serialIndex: 1,
                 editMode: false,
             }
         },
@@ -222,8 +220,6 @@
                     if(data.code && data.code==111)
                     {
                         this.users= data.data.users;
-                        this.serial= data.data.serial;
-                        console.log(this.users);
 
                     }else{
                         Swal.fire(
@@ -280,7 +276,6 @@
         created() {
             this.fetchUsers();
             Fire.$on('CHANGE',()=> this.fetchUsers());
-            // setInterval(()=>this.fetchUsers(),3000);
         }
     }
 </script>
