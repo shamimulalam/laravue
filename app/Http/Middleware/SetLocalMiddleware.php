@@ -17,6 +17,7 @@ class SetLocalMiddleware
      */
     public function handle($request, Closure $next)
     {
+        $request->route()->forgetParameter('lang');
         if(App::getLocale()!=$request->segment(2)) {
             $languages = Language::all();
             if($request->segment(2)==null)
@@ -33,6 +34,7 @@ class SetLocalMiddleware
             }
             App::setLocale($languages[0]->slug);
         }
+        $request->route()->forgetParameter('lang');
 
         return $next($request);
     }
